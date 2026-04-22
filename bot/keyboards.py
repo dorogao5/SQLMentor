@@ -49,6 +49,8 @@ def question_actions(question_id: int, has_hint: bool = False) -> InlineKeyboard
     buttons = []
     if not has_hint:
         buttons.append(InlineKeyboardButton("💡 Hint", callback_data=f"hint:{question_id}"))
+    else:
+        buttons.append(InlineKeyboardButton("⬅️ Question", callback_data=f"question_back:{question_id}"))
     buttons.append(InlineKeyboardButton("⬅️ Topics", callback_data="menu:levels"))
     buttons.append(InlineKeyboardButton("🏠 Home", callback_data="menu:main"))
     buttons.append(InlineKeyboardButton("📊 Stats", callback_data="menu:stats"))

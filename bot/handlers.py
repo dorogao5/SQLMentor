@@ -179,6 +179,12 @@ async def menu_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 parse_mode="HTML",
             )
 
+    elif data.startswith("question_back:"):
+        qid = int(data.split(":")[1])
+        q = get_question_by_id(qid)
+        if q:
+            await send_question(query, context, q)
+
     elif data.startswith("next:"):
         current_qid = int(data.split(":")[1])
         current = get_question_by_id(current_qid)
