@@ -4,6 +4,7 @@ A lightweight, Dockerized Telegram bot that helps you learn SQL through interact
 
 ## Features
 
+- **Languages:** English and Russian — choose after `/start` or in **Settings**
 - 🟢 **Beginner**, 🟡 **Intermediate**, 🔴 **Advanced** levels
 - **90 hand-picked SQL exercises** with schemas, hints, and explanations
 - 📝 **Quick Quiz** — multiple-choice test mode with 10 random questions
@@ -53,8 +54,9 @@ A fast multiple-choice test with 10 random SQL questions. Great for reviewing co
 │   ├── handlers.py   # Commands & callback logic
 │   ├── keyboards.py  # Inline button layouts
 │   ├── database.py   # SQLite async helpers
-│   ├── questions.py  # 90 coding exercises
-│   └── quiz.py       # 25 multiple-choice questions
+│   ├── questions.py      # 90 coding exercises (+ RU strings in questions_ru_i18n.py)
+│   ├── quiz.py           # 25 multiple-choice questions (+ quiz_ru_i18n.py)
+│   └── i18n_ui.py        # UI strings EN/RU
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt

@@ -1,3 +1,5 @@
+from bot.questions_ru_i18n import QUESTION_I18N_RU
+
 QUESTIONS = [
     # ======================= BEGINNER =======================
     {
@@ -1858,6 +1860,39 @@ LEVEL_EMOJI = {
     2: "🟡",
     3: "🔴",
 }
+
+_LEVEL_LABELS_RU = {
+    1: "🟢 Начинающий",
+    2: "🟡 Средний",
+    3: "🔴 Продвинутый",
+}
+
+
+def localize_question(q: dict, lang: str) -> dict:
+    if lang != "ru":
+        return q
+    patch = QUESTION_I18N_RU.get(q["id"])
+    if not patch:
+        return q
+    return {**q, **patch}
+
+
+def get_level_label(level: int, lang: str) -> str:
+    if lang == "ru":
+        return _LEVEL_LABELS_RU[level]
+    return LEVEL_LABELS[level]
+
+
+def get_topic_display(level: int, topic_en: str, lang: str) -> str:
+    if lang != "ru":
+        return topic_en
+    for q in QUESTIONS:
+        if q["level"] == level and q["topic"] == topic_en:
+            patch = QUESTION_I18N_RU.get(q["id"])
+            if patch and patch.get("topic"):
+                return patch["topic"]
+            return topic_en
+    return topic_en
 
 
 def get_question_by_id(question_id: int):

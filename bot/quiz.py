@@ -1,3 +1,5 @@
+from bot.quiz_ru_i18n import localize_quiz_question
+
 QUIZ_QUESTIONS = [
     {
         "id": 1001,
